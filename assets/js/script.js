@@ -9,12 +9,25 @@ const getSearchHistory = () => {
 
 // Function to save search history
 const saveSearchHistory = () => {
-    searchHistory.push($(".search-bar").val());
-    localStorage.setItem("search-history", JSON.stringify(searchHistory));
+    const searchValue = $(".search-bar").val().trim().toUpperCase()
+    if (!searchHistory.includes(searchValue)) {
+        searchHistory.push(searchValue);
+        localStorage.setItem("search-history", JSON.stringify(searchHistory));
+    }
 };
 
 // Function to clear search history
 const clearSearchHistory = () => {
     searchHistory = [];
     localStorage.removeItem("search-history");
+};
+
+// Function to render search history
+const renderSearchHistory = () => {
+    const searchHistoryEl = $("#search-history").children(".menu-list");
+    searchHistoryEl.empty();
+    
+    searchHistory.forEach(item => {
+        searchHistoryEl.append(`<li><a>${item}</a></li>`)
+    })
 };
