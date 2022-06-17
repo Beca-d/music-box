@@ -18,7 +18,7 @@ const APIController = (function() {
         return data.access_token;
     }
 
-    const _getTrack = async (token, tracksEndPoint) => {
+   /* const _getTrack = async (token, tracksEndPoint) => {
 
         const limit = 10;
     
@@ -34,6 +34,9 @@ const APIController = (function() {
     return {
         getToken() {
             return _getToken
-        }
-    }
+        },
+    } */
 });
+APIController ();
+_getToken ();
+console.log(token);
