@@ -4,7 +4,7 @@ const clientSecret = '51705cf2746340e3b66493d943e6eb05';
 const clientValid = (btoa(clientId + ':' + clientSecret))
 let tokenURL = 'https://accounts.spotify.com/api/token';
 let artistURL = 'https://api.spotify.com/v1/search?q=Daft+Punk&type=artist&limit=1';
-let songsURL = '';
+
 
 
 const getToken = async () => {
@@ -17,7 +17,6 @@ const getToken = async () => {
         body: 'grant_type=client_credentials'
     })
     const data = await response.json();
-    console.log(data);
     const { access_token } = data;
     sessionStorage.setItem("token", access_token);
 };
@@ -25,9 +24,8 @@ const getToken = async () => {
 getToken();
 
 let token = sessionStorage.getItem("token");
-console.log(token);
 
-const artistID = async () => {
+const getArtistID = async () => {
     const response = await fetch(artistURL, {
         method: 'GET',
         headers: {
@@ -37,10 +35,32 @@ const artistID = async () => {
         }
     })
     const data = await response.json();
-    console.log(data);
+   // console.log(data.artists.items[0].id);
+    sessionStorage.setItem("artistId", data.artists.items[0].id)
 };
 
-artistID ();
+getArtistID ();
+
+let artistId = sessionStorage.getItem("artistId");
+let songsURL = 'https://api.spotify.com/v1/artists/' + artistId + '/top-tracks?market=CA';
+
+const getTopTracks = async () => {
+    const response = await fetch(songsURL, {
+        method: 'GET',
+        headers: {
+            'Accept' : 'application/json',
+            'Content-Type' : 'aplication/json',
+            'Authorization' : 'Bearer ' + token
+        }
+    })
+    const data = await response.json();
+    console.log(data);
+    //sessionStorage.setItem("", )
+};
+
+getTopTracks ();
+
+//let topTracks = sessionStorage.getItem("");
 
     /*.then(res => {
     return res.json()
