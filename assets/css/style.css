@@ -1,25 +1,57 @@
-*{
-    box-sizing: border-box;
-    
+* {
+	box-sizing: border-box;
 }
 
 h1 {
-    font-size: 150%;
-    margin: 0.2rem;
-    text-align: center;
-  }
+	font-size: 150%;
+	margin: 0.2rem;
+	text-align: center;
+}
 .container {
-    margin: 0.3rem;
-    max-width: 80%;
-    width: 200rem;
-  }
+	margin: 0.3rem;
+	max-width: 80%;
+	width: 200rem;
+}
 
 .column {
-  margin:0rem 2rem;
-  max-width: 80%;
-  width:200rem
+	margin: 0rem 2rem;
+	max-width: 80%;
+	width: 200rem;
+}
+
+.control {
+	margin-top: 15px;
 }
 
 #search-history {
-    margin: 0rem;
+	margin: 0rem;
+}
+
+#logo {
+	opacity: 0.8;
+	max-width: 20%;
+}
+
+#hero {
+	background-image: url(MusicianCollage.png);
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	background-attachment: fixed;
+	background-position: 80%;
+}
+
+.button {
+	text-align: center;
+}
+
+.search-bar {
+	max-width: 20%;
+}
+
+.field:not(:last-child) {
+	margin-bottom: -3.25rem;
 }

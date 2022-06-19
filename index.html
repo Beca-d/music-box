@@ -1,75 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>MusicBox</title>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+		/>
+		<link rel="stylesheet" href="./assets/css/style.css" />
+		<link rel="stylesheet" href="./assets/images/MusicianCollage.png">
+	</head>
+	<header>
+		<nav
+			class="navbar is-primary"
+			role="navigation"
+			aria-label="main navigation"
+		>
+			<div class="navbar-brand">
+				<img id="logo" src="./assets/images/musicBoxLogo.png" alt="" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MusicBox</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link rel="stylesheet" href="./assets/css/style.css">
-</head>
-<header>
-  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <h1>MusicBox</h1>
-    </div>
-  </nav>
-</header>
+	    <section id="hero" class="columns">
+		<div class="column">
+		
+					<!--<h1>MusicBox</h1>-->
+		 <div class="column">
+			    <div class="bd-notification is-info">
+					<label class="label"> Search an artist</label>
+					<div class="field is-grouped">
+						<p class="control is-expanded"></p>
+						<p class="control">
+							<a class="button is-info"> Search </a>
+						</p>
+				</div>
+					<input
+						class="input search-bar"
+						type="text"
+						placeholder="Artist name"
+					/>
+		 </div>
+		</div>
+	    </section>
+		   </div>
+		</nav>
+	</header>
 
-<body>
-  <div class="container columns">
-    <section class="column is-one-fifth">
-      <label class="label"> Search an artist</label>
-      <div class="field is-grouped">
-        <p class="control is-expanded">
-          <input class="input search-bar" type="text" placeholder="Artist name">
-        </p>
-        <p class="control">
-          <a class="button is-info">
-            Search
-          </a>
-        </p>
-      </div>
-        <div id="search-history" class="menu column">
-          <h2 class="menu-label">Search history</h2>
-          <ul class="menu-list">
-            <li><a>Dua Lipa</a></li>
-            <li><a>Doja Cat</a></li>
-            <li><a>Kendrick Lamar</a></li>
-          </ul>
-          <p class="control">
-            <a class="button is-info">
-              Clear history
-            </a>
-          </p>
-        </div>
-     
-    </section>
-  
-    <div class="menu column is-one-third">
-      <h2 class="label">Top 10 Songs</h2>
-      <ol class="menu-list">
-        <li><a>Song 1</a></li>
-        <li><a>Song 2</a></li>
-        <li><a>Song 3</a></li>
-        <li><a>Song 4</a></li>
-        <li><a>Song 5</a></li>
-        <li><a>Song 6</a></li>
-        <li><a>Song 7</a></li>
-        <li><a>Song 8</a></li>
-        <li><a>Song 9</a></li>
-        <li><a>Song 10</a></li>
-      </ol>
-    </div>
-    <div class = "column is-half">
-      <label class="label">Lyrics</label>
-      <p> Wise men say only fools rush in</p>
-    </div>
+	<body>
+		<div class="container columns">
+			<section class="column is-one-fifth">
+				<div id="search-history" class="menu column">
+					<h2 class="menu-label">Search history</h2>
+					<ul class="menu-list">
+						<li><a>Dua Lipa</a></li>
+						<li><a>Doja Cat</a></li>
+						<li><a>Kendrick Lamar</a></li>
+					</ul>
+					<p class="control">
+						<a class="button is-info"> Clear history </a>
+					</p>
+				</div>
+			</section>
 
-  </div>
-</body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script>
+			<div class="menu column is-one-third">
+				<h2 class="label">Top 10 Songs</h2>
+				<ol class="menu-list">
+					<li><a>Song 1</a></li>
+					<li><a>Song 2</a></li>
+					<li><a>Song 3</a></li>
+					<li><a>Song 4</a></li>
+					<li><a>Song 5</a></li>
+					<li><a>Song 6</a></li>
+					<li><a>Song 7</a></li>
+					<li><a>Song 8</a></li>
+					<li><a>Song 9</a></li>
+					<li><a>Song 10</a></li>
+				</ol>
+			</div>
+			<div class="column is-half">
+				<label class="label">Lyrics</label>
+				<p>Wise men say only fools rush in</p>
+			</div>
+		</div>
+	</body>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+		referrerpolicy="no-referrer"
+	></script>
 
-<script src="./assets/js/script.js"></script>
+	<script src="./assets/js/script.js"></script>
 </html>
