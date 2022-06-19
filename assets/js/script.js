@@ -6,7 +6,7 @@ let tokenURL = 'https://accounts.spotify.com/api/token';
 let artistURL = 'https://api.spotify.com/v1/search?q=' + 'Daft+Punk' + '&type=artist&limit=1';
 //need to add variable to artistURL to bring in search function 
 
-
+//Must get token api call to run first - otherwise errors occur!!!!
 const getToken = async () => {
     const response = await fetch(tokenURL, {
         method: 'POST',
