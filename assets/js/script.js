@@ -35,7 +35,7 @@ const getArtistID = async () => {
         }
     })
     const data = await response.json();
-    console.log(data.artists.items[0].id);
+    //console.log(data.artists.items[0].id);
     sessionStorage.setItem("artistId", data.artists.items[0].id)
 };
 
@@ -54,12 +54,24 @@ const getTopTracks = async () => {
         }
     })
     const data = await response.json();
-    console.log(data);
+    const { tracks } = data;
+    var trackNames = [tracks[0].name, tracks[1].name, tracks[2].name, tracks[3].name, tracks[4].name, tracks[5].name, tracks[6].name, tracks[7].name, tracks[8].name, tracks[9].name];
+    var trackIds = [tracks[0].id, tracks[1].id, tracks[2].id, tracks[3].id, tracks[4].id, tracks[5].id, tracks[6].id, tracks[7].id, tracks[8].id, tracks[9].id];
+    sessionStorage.setItem("trackNames", JSON.stringify(trackNames));
+    sessionStorage.setItem("trackIds", JSON.stringify(trackIds));
     //set top songs to element with url link to another api call for lyrics/audio demo
 };
 
 getTopTracks ();
+let trackNames = JSON.parse(sessionStorage.getItem("trackNames"));
+let trackIds = JSON.parse(sessionStorage.getItem("trackIds"));
+console.log(trackNames);
 
+document.getElementById
+
+
+
+// Jaryd's work **
 let searchHistory = [];
 
 // Function to get search history from local storage.
