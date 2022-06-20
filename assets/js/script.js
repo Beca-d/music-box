@@ -57,8 +57,8 @@ searchButtonEl.on("click", function() {
 });
 
 // 3.a) ****************************************************
-const getArtistID = async () => {
-    const artistURL = 'https://api.spotify.com/v1/search?q=' + 'queen' + '&type=artist&limit=1';
+const getArtistID = async (artist) => {
+    const artistURL = `https://api.spotify.com/v1/search?q=${artist}&type=artist&limit=1`;
     const response = await fetch(artistURL, {
         method: 'GET',
         headers: {
@@ -99,7 +99,6 @@ const getArtistID = async () => {
     //set top songs to element with url link to another api call for lyrics/audio demo
 
     renderTopSongs(trackNames, trackIds);
-    console.log(trackNames)
 };
 
 // 3.b) Call Artist Id func ************************************
@@ -154,11 +153,11 @@ const renderSearchHistory = () => {
 // Selector for top songs list
 const topSongListEl = $(".top-song-list");
 
-const renderTopSongs = (arr, trackNames) => {
+const renderTopSongs = (arr, trackIds) => {
     let counter = 0;
     topSongListEl.text("");
     arr.forEach(song => {
-        topSongListEl.append(`<li class='song${counter}' data-track='${trackNames[counter]}'>${song}</li>`);
+        topSongListEl.append(`<li class='song${counter}' data-track='${trackIds[counter]}'>${song}</li>`);
         counter ++;
     });
 };

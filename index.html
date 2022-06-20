@@ -13,7 +13,6 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
         crossorigin="anonymous"/>
-        <link rel="stylesheet" href="./assets/css/secondary-style.scss" />
 	</head>
     <body>
         <header>
@@ -67,16 +66,23 @@
                 </div>
                 <div class="column is-one-fourth">
                     <label class="label">Lyrics</label> 
-                    <button class="button is-info" id="copyLyrics" type="submit">Click to Copy Lyrics</button>
-                    <p>Wise men say only fools rush in</p>
+                    <p class="lyrics-text">Click on a song to display Lyrics!</p>
+                    <button class="js-modal-trigger button is-info" data-target="modal-of-lyrics">
+                        Copy Lyrics
+                    </button>
                 </div>
-                <div class="modal-container" id="modal-container">
-                    <div class="modal">
-                        <h2>Track Name (addIcon)</h2>
-                        <p> Lyrics </p>
-                        <button class="button is-info" id="close">Close</button>
+                <div id="modal-of-lyrics" class="modal">
+                    <div class="modal-background"></div>
+                  
+                    <div class="modal-content">
+                      <div class="box">
+                        <h2>Lyrics</h2>
+                        <p class="modal-lyrics"></p>
+                      </div>
                     </div>
-                </div>
+                  
+                    <button class="modal-close is-large" aria-label="close"></button>
+                  </div>
                 <div class="column is-one-fourth">
                     <h2 class="label">Music Player</h2>
                     <img src="https://via.placeholder.com/150" alt="placeholder image" />

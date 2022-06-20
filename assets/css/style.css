@@ -95,6 +95,9 @@ button:hover {
 .menu-list li {
 	line-height: 1.7;
 	font-size: 1rem;
+}
+
+#search-history li{
 	box-shadow: inset 0 0.4rem 1.4rem 0 rgb(252, 190, 99);
 }
 
@@ -108,4 +111,7 @@ button:hover {
 .label {
 	color: var(--primary-color);
 	font-weight: 800;
+}
+.lyrics-text {
+	margin-bottom: 1rem;
 }
