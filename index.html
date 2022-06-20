@@ -10,7 +10,6 @@
 			href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
 		/>
 		<link rel="stylesheet" href="./assets/css/style.css" />
-		<link rel="stylesheet" href="./assets/images/MusicianCollage.png">
 	</head>
 	<header>
 		<nav
@@ -18,31 +17,28 @@
 			role="navigation"
 			aria-label="main navigation"
 		>
-			<div class="navbar-brand">
-				<img id="logo" src="./assets/images/musicBoxLogo.png" alt="" />
+			<section id="hero" class="columns">
+				<div class="navbar-brand">
+					<img id="logo" src="./assets/images/musicBoxLogo.png" alt="" />
 
-	    <section id="hero" class="columns">
-		<div class="column">
-		
-					<!--<h1>MusicBox</h1>-->
-		 <div class="column">
-			    <div class="bd-notification is-info">
-					<label class="label"> Search an artist</label>
-					<div class="field is-grouped">
-						<p class="control is-expanded"></p>
-						<p class="control">
-							<a class="button is-info"> Search </a>
-						</p>
+					<div class="column">
+						<div class="bd-notification is-info">
+							<label class="labelSearch"> Search an artist</label>
+							<div class="field is-grouped">
+								<p class="control is-expanded"></p>
+								<p class="control">
+									<a class="button is-info"> Search </a>
+								</p>
+							</div>
+							<input
+								class="input search-bar"
+								type="text"
+								placeholder="Artist name"
+							/>
+						</div>
+					</div>
 				</div>
-					<input
-						class="input search-bar"
-						type="text"
-						placeholder="Artist name"
-					/>
-		 </div>
-		</div>
-	    </section>
-		   </div>
+			</section>
 		</nav>
 	</header>
 
