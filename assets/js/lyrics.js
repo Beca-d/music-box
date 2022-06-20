@@ -5,7 +5,7 @@ var artistEl = document.getElementById("artist-list");
 // Get Lyrics Lyrics.ovh API 
 const songID = async (event) => {
 
-    let track = event.target.text.trim();
+    let track = event.target.textContent.trim();
     let isFeatTrack = track.indexOf('(') !== -1 ? track.split('(')[0].trim() : track;
     let artist = artistEl.firstElementChild.textContent;
 
