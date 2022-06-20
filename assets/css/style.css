@@ -83,6 +83,7 @@ h1 {
 
 .button {
 	background-color: var(--primary-color) !important;
+	border-radius: 10px;
 }
 
 button:hover {
@@ -91,8 +92,17 @@ button:hover {
     transform: scale(1.03);
 }
 
-.menu-list li a:hover {
+.menu-list li {
+	line-height: 1.7;
+	font-size: 1rem;
+	box-shadow: inset 0 0.4rem 1.4rem 0 rgb(252, 190, 99);
+}
+
+.menu-list li:hover {
 	background-color: var(--tertiary-color);
+	color: rgb(7, 7, 154);
+	box-shadow: 0 0.4rem 1.4rem 0 rgba(4, 7, 0, 0.521);
+	border-radius: 10px;
 }
 
 .label {
