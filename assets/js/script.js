@@ -79,15 +79,15 @@ document.getElementById('song8').innerHTML = trackNames[8];
 document.getElementById('song9').innerHTML = trackNames[9];
 
 //document.getElementById('song0').href = "https://open.spotify.com/embed/track/" + trackIds[0];
-document.getElementById('song1').href = "https://open.spotify.com/embed/track/" + trackIds[1];
-document.getElementById('song2').href = "https://open.spotify.com/embed/track/" + trackIds[2];
-document.getElementById('song3').href = "https://open.spotify.com/embed/track/" + trackIds[3];
-document.getElementById('song4').href = "https://open.spotify.com/embed/track/" + trackIds[4];
-document.getElementById('song5').href = "https://open.spotify.com/embed/track/" + trackIds[5];
-document.getElementById('song6').href = "https://open.spotify.com/embed/track/" + trackIds[6];
-document.getElementById('song7').href = "https://open.spotify.com/embed/track/" + trackIds[7];
-document.getElementById('song8').href = "https://open.spotify.com/embed/track/" + trackIds[8];
-document.getElementById('song9').href = "https://open.spotify.com/embed/track/" + trackIds[9];
+//document.getElementById('song1').href = "https://open.spotify.com/embed/track/" + trackIds[1];
+//document.getElementById('song2').href = "https://open.spotify.com/embed/track/" + trackIds[2];
+//document.getElementById('song3').href = "https://open.spotify.com/embed/track/" + trackIds[3];
+///document.getElementById('song4').href = "https://open.spotify.com/embed/track/" + trackIds[4];
+//document.getElementById('song5').href = "https://open.spotify.com/embed/track/" + trackIds[5];
+//document.getElementById('song6').href = "https://open.spotify.com/embed/track/" + trackIds[6];
+//document.getElementById('song7').href = "https://open.spotify.com/embed/track/" + trackIds[7];
+//document.getElementById('song8').href = "https://open.spotify.com/embed/track/" + trackIds[8];
+//document.getElementById('song9').href = "https://open.spotify.com/embed/track/" + trackIds[9];
 
 const playSong0 = document.querySelector("#song0");
     playSong0.addEventListener('click', (e) => {
