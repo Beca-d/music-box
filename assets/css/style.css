@@ -1,25 +1,91 @@
-*{
-    box-sizing: border-box;
-    
+* {
+	box-sizing: border-box;
+}
+
+:root {
+	--primary-color: rgb(92, 219, 168);
+	--secondary-color: #f5f76d;
+	--tertiary-color: #36dee1;
 }
 
 h1 {
-    font-size: 150%;
-    margin: 0.2rem;
-    text-align: center;
-  }
+	font-size: 150%;
+	margin: 0.2rem;
+	text-align: center;
+}
 .container {
-    margin: 0.3rem;
-    max-width: 80%;
-    width: 200rem;
-  }
+	margin: 0.3rem;
+	max-width: 80%;
+	width: 200rem;
+}
 
 .column {
-  margin:0rem 2rem;
-  max-width: 80%;
-  width:200rem
+	margin: 0rem 2rem;
+	max-width: 80%;
+	width: 200rem;
+}
+
+.control {
+	margin-top: 15px;
 }
 
 #search-history {
-    margin: 0rem;
+	margin: 0rem;
+}
+
+#logo {
+	opacity: 0.9;
+	margin-left: 100px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	background-attachment: fixed;
+}
+
+#hero {
+	background-image: url(../images/MusicianCollage.png);
+	background-size: contain;
+	background-position: center;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	background-attachment: fixed;
+	background-position: 25%;
+}
+
+.button {
+	text-align: center;
+}
+
+.search-bar {
+	max-width: 20%;
+}
+
+.bd-notification is-info {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+}
+
+.labelSearch {
+	color: var(--primary-color);
+	font-weight: 900;
+	text-shadow: 5px 5px 10px black;
+	font-size: 30px;
+}
+
+#search-history {
+	margin-top: 20px;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 0.5em 1em 0;
+}
+
+.button {
+	background-color: var(--primary-color) !important;
+}
+
+.label {
+	color: var(--primary-color);
+	font-weight: 800;
 }
