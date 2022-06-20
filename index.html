@@ -25,10 +25,10 @@
 						<div class="bd-notification is-info">
 							<label class="labelSearch"> Search an artist</label>
 							<div class="field is-grouped">
-								<p class="control is-expanded"></p>
-								<p class="control">
-									<a class="button is-info"> Search </a>
-								</p>
+								<!-- <p class="control is-expanded"></p> -->
+								<!-- <p class="control"> -->
+									<button class="button is-info search-button"> Search </button>
+								<!-- </p> -->
 							</div>
 							<input
 								class="input search-bar"
@@ -61,25 +61,10 @@
 
 			<div class="menu column is-one-fourth">
 				<h2 class="label">Top 10 Songs</h2>
-				<ol class="menu-list" id="track-list">
-                    <li><a id="song0">Song 1</a></li>
-                    <li><a id="song1">Song 2</a></li>
-                    <li><a id="song2">Song 3</a></li>
-                    <li><a id="song3">Song 4</a></li>
-                    <li><a id="song4">Song 5</a></li>
-                    <li><a id="song5">Song 6</a></li>
-                    <li><a id="song6">Song 7</a></li>
-                    <li><a id="song7">Song 8</a></li>
-                    <li><a id="song8">Song 9</a></li>
-                    <li><a id="song9">Song 10</a></li>
-                </ol>
+				<ol id="track-list" class="menu-list top-song-list"> </ol>
 			</div>
 
   </div>
-  <script src="./assets/js/player.js"></script>
-  <script src="./assets/js/script.js"></script>
-</body>
-
 
 			<div class="column is-one-fourth" id="lyrics">
 				<label class="label">Lyrics</label>
@@ -92,12 +77,13 @@
                 <iframe id="music-player" style="border-radius:12px" src="" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 			</div>
 		</div>
-	</body>
-	<script
+    <script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
 		referrerpolicy="no-referrer">
     </script>
     <script src="./assets/js/player.js"></script>
-	<script src="./assets/js/script.js"></script>
-	<script src="./assets/js/lyrics.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/lyrics.js"></script>
+	</body>
+	
 </html>
