@@ -3,8 +3,6 @@ const clientSecret = '51705cf2746340e3b66493d943e6eb05';
 
 const clientValid = (btoa(clientId + ':' + clientSecret))
 let tokenURL = 'https://accounts.spotify.com/api/token';
-// let artistURL = 'https://api.spotify.com/v1/search?q=' + 'Daft+Punk' + '&type=artist&limit=1';
-//need to add variable to artistURL to bring in search function 
 
 //Must get token api call to run first - otherwise errors occur!!!!
 const getToken = async () => {
@@ -25,6 +23,7 @@ getToken();
 
 let token = sessionStorage.getItem("token");
 
+// Function to get artist id
 const getArtistID = async (artist) => {
 
     const artistURL = `https://api.spotify.com/v1/search?q=${artist}&type=artist&limit=1`;
@@ -44,9 +43,7 @@ const getArtistID = async (artist) => {
     getTopTracks();
 };
 
-// let artistId = sessionStorage.getItem("artistId");
-// let songsURL = 'https://api.spotify.com/v1/artists/' + artistId + '/top-tracks?market=CA';
-
+// Function to get top tracks
 const getTopTracks = async () => {
     let artistId = sessionStorage.getItem("artistId");
     let songsURL = 'https://api.spotify.com/v1/artists/' + artistId + '/top-tracks?market=CA';
@@ -68,10 +65,6 @@ const getTopTracks = async () => {
 
     renderTopSongs(trackNames, trackIds);
 };
-
-// getTopTracks ();
-// let trackNames = JSON.parse(sessionStorage.getItem("trackNames"));
-// let trackIds = JSON.parse(sessionStorage.getItem("trackIds"));
 
 // Jaryd's work **
 let searchHistory = [];
@@ -125,7 +118,6 @@ const renderTopSongs = (arr, trackIds) => {
 };
 
 // Event Listener for click on top song. So far it opens the iFrame for the song sample. 
-// TODO: show lyrics
 topSongListEl.on("click", "li", function (event) {
     $("#music-player").attr("src", `https://open.spotify.com/embed/track/${event.target.getAttribute("data-track")}`);
 })
@@ -133,11 +125,5 @@ topSongListEl.on("click", "li", function (event) {
 // Event listener for click on search button
 searchButtonEl.on("click", function() {
     const searchText = $(".search-bar").val();
-
-    // artistId = sessionStorage.getItem("artistId");
-    // songsURL = 'https://api.spotify.com/v1/artists/' + artistId + '/top-tracks?market=CA';
-    console.log(searchText);
     getArtistID(searchText);
-    // getTopTracks ();
-    // renderTopSongs(trackNames);
 })
