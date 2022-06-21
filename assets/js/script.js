@@ -22,12 +22,14 @@ const clientSecret = '51705cf2746340e3b66493d943e6eb05';
 const clientValid = (btoa(clientId + ':' + clientSecret))
 let tokenURL = 'https://accounts.spotify.com/api/token';
 // Selector for search button
-const searchButtonEl = $(".search-button"); 
+const searchButtonEl = $(".search-button");
+const clearHistoryButtonEl = $(".clear-history");
+const searchHistoryListEl = $("#search-history");
 let searchHistory = [];
 
 // 2. ****************************************************************
 //Must get token api call to run first - otherwise errors occur!!!!
-const getToken = async () => {
+const getToken = async (searchValueFromHistory) => {
     const response = await fetch(tokenURL, {
         method: 'POST',
         headers: {
@@ -38,26 +40,19 @@ const getToken = async () => {
     })
     const data = await response.json();
     const { access_token } = data;
-    sessionStorage.setItem("token", access_token);
+    // sessionStorage.setItem("token", access_token);
+    
+    const searchText = $(".search-bar").val();
+    let input = searchValueFromHistory? searchValueFromHistory : searchText;
+    getArtistID(input, access_token);
 };
 
-getToken();
-
-let token = sessionStorage.getItem("token");
-console.log(token);
-
-setInterval(getToken, 3600000);
-
 searchButtonEl.on("click", function() {
-    const searchText = $(".search-bar").val();
-
-    console.log(searchText);
-    getArtistID(searchText);
-    // renderTopSongs(trackNames);
+    getToken()
 });
 
 // 3.a) ****************************************************
-const getArtistID = async (artist) => {
+const getArtistID = async (artist, token) => {
     const artistURL = `https://api.spotify.com/v1/search?q=${artist}&type=artist&limit=1`;
     const response = await fetch(artistURL, {
         method: 'GET',
@@ -68,16 +63,15 @@ const getArtistID = async (artist) => {
         }
     })
     const data = await response.json();
-    //console.log(data.artists.items[0].id);
-    sessionStorage.setItem("artistId", data.artists.items[0].id)
+
+    const artistId = data.artists.items[0].id;
     
     // 8.b) Call getTopTracks within Atist ID func to have access to artistId ****
-    getTopTracks();
+    getTopTracks(artistId, token);
 };
 
 // Function to get top tracks
-const getTopTracks = async () => {
-    let artistId = sessionStorage.getItem("artistId");
+const getTopTracks = async (artistId, token) => {
     let songsURL = 'https://api.spotify.com/v1/artists/' + artistId + '/top-tracks?market=CA';
     const response = await fetch(songsURL, {
         method: 'GET',
@@ -91,11 +85,12 @@ const getTopTracks = async () => {
     const { tracks } = data;
     var trackNames = [tracks[0].name, tracks[1].name, tracks[2].name, tracks[3].name, tracks[4].name, tracks[5].name, tracks[6].name, tracks[7].name, tracks[8].name, tracks[9].name];
     var trackIds = [tracks[0].id, tracks[1].id, tracks[2].id, tracks[3].id, tracks[4].id, tracks[5].id, tracks[6].id, tracks[7].id, tracks[8].id, tracks[9].id];
-    sessionStorage.setItem("trackNames", JSON.stringify(trackNames));
-    sessionStorage.setItem("trackIds", JSON.stringify(trackIds));
+    
     //set top songs to element with url link to another api call for lyrics/audio demo
 
     renderTopSongs(trackNames, trackIds);
+    saveSearchHistory();
+    renderSearchHistory();
 };
 
 // 4. ********************************************************
@@ -128,7 +123,7 @@ const renderSearchHistory = () => {
     searchHistoryEl.empty();
     
     searchHistory.forEach(item => {
-        searchHistoryEl.append(`<li><a>${item}</a></li>`)
+        searchHistoryEl.append(`<li><a class='search-history-item'>${item}</a></li>`)
     })
 };
 
@@ -148,7 +143,22 @@ const renderTopSongs = (arr, trackIds) => {
 // 11. Top Song Player ********************************************************
 // Event Listener for click on top song. So far it opens the iFrame for the song sample. 
 topSongListEl.on("click", "li", function (event) {
+    $("#placeholder").remove();
+    
     $("#music-player").attr("src", `https://open.spotify.com/embed/track/${event.target.getAttribute("data-track")}`);
+});
+
+// Event listener for clicks on the clear history button
+clearHistoryButtonEl.on("click", function (event) {
+    clearSearchHistory();
+    renderSearchHistory();
+})
+
+// Event listener for clicks on search history item to bring up results of search again
+searchHistoryListEl.on("click", "li", function (event) {
+    const searchText = $(event.target).text();
+    console.log(searchText)
+    getToken(searchText);
 })
 
 // 15. ************************************************************************
@@ -158,3 +168,5 @@ const clearSearchHistory = () => {
     localStorage.removeItem("search-history");
 };
 
+getSearchHistory();
+renderSearchHistory();
