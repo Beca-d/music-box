@@ -123,7 +123,7 @@ const renderSearchHistory = () => {
     searchHistoryEl.empty();
     
     searchHistory.forEach(item => {
-        searchHistoryEl.append(`<li><a class='search-history-item'>${item}</a></li>`)
+        searchHistoryEl.prepend(`<li><a class='search-history-item'>${item}</a></li>`)
     })
 };
 
