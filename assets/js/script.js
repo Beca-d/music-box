@@ -39,25 +39,29 @@ const getToken = async () => {
     const data = await response.json();
     const { access_token } = data;
     sessionStorage.setItem("token", access_token);
+    
+    const searchText = $(".search-bar").val();
+    getArtistID(searchText, access_token);
 };
 
-getToken();
+// getToken();
 
-let token = sessionStorage.getItem("token");
-console.log(token);
+// let token = sessionStorage.getItem("token");
+// console.log(token);
 
-setInterval(getToken, 3600000);
+// setInterval(getToken, 3600000);
 
 searchButtonEl.on("click", function() {
-    const searchText = $(".search-bar").val();
+    // const searchText = $(".search-bar").val();
 
-    console.log(searchText);
-    getArtistID(searchText);
+    // 
+    getToken()
+    // getArtistID(searchText);
     // renderTopSongs(trackNames);
 });
 
 // 3.a) ****************************************************
-const getArtistID = async (artist) => {
+const getArtistID = async (artist, token) => {
     const artistURL = `https://api.spotify.com/v1/search?q=${artist}&type=artist&limit=1`;
     const response = await fetch(artistURL, {
         method: 'GET',
@@ -72,11 +76,11 @@ const getArtistID = async (artist) => {
     sessionStorage.setItem("artistId", data.artists.items[0].id)
     
     // 8.b) Call getTopTracks within Atist ID func to have access to artistId ****
-    getTopTracks();
+    getTopTracks(token);
 };
 
 // Function to get top tracks
-const getTopTracks = async () => {
+const getTopTracks = async (token) => {
     let artistId = sessionStorage.getItem("artistId");
     let songsURL = 'https://api.spotify.com/v1/artists/' + artistId + '/top-tracks?market=CA';
     const response = await fetch(songsURL, {
