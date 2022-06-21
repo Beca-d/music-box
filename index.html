@@ -61,28 +61,32 @@
                     <ol id="track-list" class="menu-list top-song-list"></ol>
                 </div>
                 <div class="column is-one-fourth" id="lyrics">
-                    <label class="label">Lyrics</label> 
-                    <p class="lyrics-text">Click on a song to display Lyrics!</p>
+                    <label class="label">Lyrics</label>
                     <button class="js-modal-trigger button is-info" data-target="modal-of-lyrics">
                         Copy Lyrics
                     </button>
+                    <p class="lyrics-text">Click on a song to display Lyrics!</p>
                 </div>
-                <div id="modal-of-lyrics" class="modal">
-                    <div class="modal-background"></div>
-                  
-                    <div class="modal-content">
-                      <div class="box">
-                        <h2>Lyrics</h2>
-                        <p class="modal-lyrics"></p>
-                      </div>
-                    </div>
-                  
-                    <button class="modal-close is-large" aria-label="close"></button>
-                  </div>
+                
                 <div class="column is-one-fourth">
                     <h2 class="label">Music Player</h2>
                     <img src="https://via.placeholder.com/150" alt="placeholder image" />
                     <iframe id="music-player" style="border-radius:12px" src="" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                </div>
+            </div>
+            <div id="modal-of-lyrics" class="modal">
+                <div class="modal-background"></div>
+            
+                <div class="modal-card">
+                    <header class="modal-card-head">
+                    <p class="modal-card-title">Lyrics: <span id="song-title-modal"></span></p>
+                    <button class="button is-info copier"><i class="fas fa-copy"></i></button>
+                    <button class="button is-info close-lyrics">Close</button>
+                    </header>
+                    <section class="modal-card-body">
+                    <p id="song-lyrics-modal"></p>
+                    </section>
+                </div>
                 </div>
             </div>
 
