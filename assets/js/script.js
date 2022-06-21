@@ -38,26 +38,14 @@ const getToken = async () => {
     })
     const data = await response.json();
     const { access_token } = data;
-    sessionStorage.setItem("token", access_token);
+    // sessionStorage.setItem("token", access_token);
     
     const searchText = $(".search-bar").val();
     getArtistID(searchText, access_token);
 };
 
-// getToken();
-
-// let token = sessionStorage.getItem("token");
-// console.log(token);
-
-// setInterval(getToken, 3600000);
-
 searchButtonEl.on("click", function() {
-    // const searchText = $(".search-bar").val();
-
-    // 
     getToken()
-    // getArtistID(searchText);
-    // renderTopSongs(trackNames);
 });
 
 // 3.a) ****************************************************
@@ -72,16 +60,15 @@ const getArtistID = async (artist, token) => {
         }
     })
     const data = await response.json();
-    //console.log(data.artists.items[0].id);
-    sessionStorage.setItem("artistId", data.artists.items[0].id)
+
+    const artistId = data.artists.items[0].id;
     
     // 8.b) Call getTopTracks within Atist ID func to have access to artistId ****
-    getTopTracks(token);
+    getTopTracks(artistId, token);
 };
 
 // Function to get top tracks
-const getTopTracks = async (token) => {
-    let artistId = sessionStorage.getItem("artistId");
+const getTopTracks = async (artistId, token) => {
     let songsURL = 'https://api.spotify.com/v1/artists/' + artistId + '/top-tracks?market=CA';
     const response = await fetch(songsURL, {
         method: 'GET',
@@ -95,8 +82,7 @@ const getTopTracks = async (token) => {
     const { tracks } = data;
     var trackNames = [tracks[0].name, tracks[1].name, tracks[2].name, tracks[3].name, tracks[4].name, tracks[5].name, tracks[6].name, tracks[7].name, tracks[8].name, tracks[9].name];
     var trackIds = [tracks[0].id, tracks[1].id, tracks[2].id, tracks[3].id, tracks[4].id, tracks[5].id, tracks[6].id, tracks[7].id, tracks[8].id, tracks[9].id];
-    sessionStorage.setItem("trackNames", JSON.stringify(trackNames));
-    sessionStorage.setItem("trackIds", JSON.stringify(trackIds));
+    
     //set top songs to element with url link to another api call for lyrics/audio demo
 
     renderTopSongs(trackNames, trackIds);
