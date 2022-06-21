@@ -24,11 +24,12 @@ let tokenURL = 'https://accounts.spotify.com/api/token';
 // Selector for search button
 const searchButtonEl = $(".search-button");
 const clearHistoryButtonEl = $(".clear-history");
+const searchHistoryListEl = $("#search-history");
 let searchHistory = [];
 
 // 2. ****************************************************************
 //Must get token api call to run first - otherwise errors occur!!!!
-const getToken = async () => {
+const getToken = async (searchValueFromHistory) => {
     const response = await fetch(tokenURL, {
         method: 'POST',
         headers: {
@@ -42,7 +43,8 @@ const getToken = async () => {
     // sessionStorage.setItem("token", access_token);
     
     const searchText = $(".search-bar").val();
-    getArtistID(searchText, access_token);
+    let input = searchValueFromHistory? searchValueFromHistory : searchText;
+    getArtistID(input, access_token);
 };
 
 searchButtonEl.on("click", function() {
@@ -121,7 +123,7 @@ const renderSearchHistory = () => {
     searchHistoryEl.empty();
     
     searchHistory.forEach(item => {
-        searchHistoryEl.append(`<li><a>${item}</a></li>`)
+        searchHistoryEl.append(`<li><a class='search-history-item'>${item}</a></li>`)
     })
 };
 
@@ -146,9 +148,17 @@ topSongListEl.on("click", "li", function (event) {
     $("#music-player").attr("src", `https://open.spotify.com/embed/track/${event.target.getAttribute("data-track")}`);
 });
 
+// Event listener for clicks on the clear history button
 clearHistoryButtonEl.on("click", function (event) {
     clearSearchHistory();
     renderSearchHistory();
+})
+
+// Event listener for clicks on search history item to bring up results of search again
+searchHistoryListEl.on("click", "li", function (event) {
+    const searchText = $(event.target).text();
+    console.log(searchText)
+    getToken(searchText);
 })
 
 // 15. ************************************************************************
