@@ -69,17 +69,14 @@ const getArtistID = async (artist) => {
     })
     const data = await response.json();
     //console.log(data.artists.items[0].id);
-    let artistId = data.artists.items[0].id
-    console.log(artistId);
-    sessionStorage.setItem("artistId", artistId);
-
+    sessionStorage.setItem("artistId", data.artists.items[0].id)
+    
     // 8.b) Call getTopTracks within Atist ID func to have access to artistId ****
-    getTopTracks ();
+    getTopTracks();
 };
 
-
- // 8.a) function to get Top Tracks *********************************
- const getTopTracks = async () => {
+// Function to get top tracks
+const getTopTracks = async () => {
     let artistId = sessionStorage.getItem("artistId");
     let songsURL = 'https://api.spotify.com/v1/artists/' + artistId + '/top-tracks?market=CA';
     const response = await fetch(songsURL, {
@@ -163,6 +160,7 @@ const renderTopSongs = (arr, trackIds) => {
 };
 
 // 11. Top Song Player ********************************************************
+// Event Listener for click on top song. So far it opens the iFrame for the song sample. 
 topSongListEl.on("click", "li", function (event) {
     $("#music-player").attr("src", `https://open.spotify.com/embed/track/${event.target.getAttribute("data-track")}`);
 })
