@@ -98,9 +98,6 @@ const getTopTracks = async () => {
     renderTopSongs(trackNames, trackIds);
 };
 
-// 3.b) Call Artist Id func ************************************
-getArtistID ();
-
 // 4. ********************************************************
 // No Artist found open Modal!!
 
@@ -134,17 +131,6 @@ const renderSearchHistory = () => {
         searchHistoryEl.append(`<li><a>${item}</a></li>`)
     })
 };
-
-// Replaced Code with more effecient Arrays******************************************
-//let trackNames = JSON.parse(sessionStorage.getItem("trackNames"));
-//let trackIds = JSON.parse(sessionStorage.getItem("trackIds"));
-//console.log(trackIds);
-//document.getElementById('song0').innerHTML = trackNames[0];
-//document.getElementById('song0').href = "https://open.spotify.com/embed/track/" + trackIds[0];
-/*const playSong0 = document.querySelector("#song0");
-    playSong0.addEventListener('click', (e) => {
-        document.getElementById('music-player').src = "https://open.spotify.com/embed/track/" + trackIds[0] + "?utm_source=generator"
-}); */
 
 // 9. Add top tracks to list *****************************************************
 // Selector for top songs list
