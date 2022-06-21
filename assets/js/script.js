@@ -22,7 +22,8 @@ const clientSecret = '51705cf2746340e3b66493d943e6eb05';
 const clientValid = (btoa(clientId + ':' + clientSecret))
 let tokenURL = 'https://accounts.spotify.com/api/token';
 // Selector for search button
-const searchButtonEl = $(".search-button"); 
+const searchButtonEl = $(".search-button");
+const clearHistoryButtonEl = $(".clear-history");
 let searchHistory = [];
 
 // 2. ****************************************************************
@@ -86,6 +87,8 @@ const getTopTracks = async (artistId, token) => {
     //set top songs to element with url link to another api call for lyrics/audio demo
 
     renderTopSongs(trackNames, trackIds);
+    saveSearchHistory();
+    renderSearchHistory();
 };
 
 // 4. ********************************************************
@@ -139,6 +142,11 @@ const renderTopSongs = (arr, trackIds) => {
 // Event Listener for click on top song. So far it opens the iFrame for the song sample. 
 topSongListEl.on("click", "li", function (event) {
     $("#music-player").attr("src", `https://open.spotify.com/embed/track/${event.target.getAttribute("data-track")}`);
+});
+
+clearHistoryButtonEl.on("click", function (event) {
+    clearSearchHistory();
+    renderSearchHistory();
 })
 
 // 15. ************************************************************************
@@ -148,3 +156,5 @@ const clearSearchHistory = () => {
     localStorage.removeItem("search-history");
 };
 
+getSearchHistory();
+renderSearchHistory();
