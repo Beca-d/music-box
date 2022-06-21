@@ -141,6 +141,8 @@ const renderTopSongs = (arr, trackIds) => {
 // 11. Top Song Player ********************************************************
 // Event Listener for click on top song. So far it opens the iFrame for the song sample. 
 topSongListEl.on("click", "li", function (event) {
+    $("#placeholder").remove();
+    
     $("#music-player").attr("src", `https://open.spotify.com/embed/track/${event.target.getAttribute("data-track")}`);
 });
 
