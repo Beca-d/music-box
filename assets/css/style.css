@@ -85,6 +85,8 @@ h1 {
 .button {
 	background-color: var(--primary-color) !important;
 	border-radius: 10px;
+	font-weight: bold;
+	font-size: 18px;
 }
 
 button:hover,
@@ -95,12 +97,12 @@ a:hover {
 }
 
 .menu-list li {
-	line-height: 1.7;
+	line-height: 2;
 	font-size: 1rem;
 }
 
  #search-history li{ 
-	box-shadow: inset 0 0.4rem 1.4rem 0 rgb(252, 190, 99);
+	box-shadow: inset 0 0.4rem 1.4rem 0 rgb(214, 209, 202);
 }
 
 .menu-list li:hover {
@@ -108,6 +110,7 @@ a:hover {
 	color: rgb(7, 7, 154);
 	box-shadow: 0 0.4rem 1.4rem 0 rgba(4, 7, 0, 0.521);
 	border-radius: 1px;
+	cursor: pointer;
 }
 
 .label {
@@ -115,8 +118,10 @@ a:hover {
 	font-weight: 800;
 	font-size: 1.7rem;
 }
-.lyrics-text {
-	margin-bottom: 1rem;
+
+#lyrics p,
+#artist-list li {
+	font-size: 18px;
 }
 
 .copier {
@@ -124,8 +129,8 @@ a:hover {
 }
 
 #placeholder {
-	height: 500px;
-	width: 500px;
+	height: auto;
+	width: 100%;
 }
 
 .js-modal-trigger,

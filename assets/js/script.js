@@ -146,6 +146,7 @@ topSongListEl.on("click", "li", function (event) {
     $("#placeholder").remove();
     
     $("#music-player").attr("src", `https://open.spotify.com/embed/track/${event.target.getAttribute("data-track")}`);
+    $("#full-song-url").attr("href", `https://open.spotify.com/embed/track/${event.target.getAttribute("data-track")}`);
 });
 
 // Event listener for clicks on the clear history button
@@ -170,3 +171,14 @@ const clearSearchHistory = () => {
 
 getSearchHistory();
 renderSearchHistory();
+
+// $("#artist-list li").click(function() {
+//     $(this).prependTo("#artist-list");
+//     //.prepend(`<i>${"artist-list a"}}</li>`)
+//     console.log("complete!");
+// })
+
+$("#artist-list a").click(function() {
+    $(this).parent().before$("#artist-list a:first");
+    return false;
+});
