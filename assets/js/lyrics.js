@@ -11,7 +11,6 @@ const songID = async (event) => {
     let track = event.target.textContent.trim();
     let isFeatTrack = track.indexOf('(') !== -1 ? track.split('(')[0].trim() : track;
     let artist = artistEl.firstElementChild.textContent;
-
     // calling API
     try {
         await fetch(`https://api.lyrics.ovh/v1/${artist}/${isFeatTrack}`, {
