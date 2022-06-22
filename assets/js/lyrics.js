@@ -3,13 +3,14 @@ var lyricsContainer = document.getElementById("lyrics");
 var artistEl = document.getElementById("artist-list");
 var lyricsModal = document.getElementById('song-lyrics-modal');
 
+const lyricsNotFoundModalEl = $("#modal-lyrics-not-found");
+
 // Get Lyrics Lyrics.ovh API 
 const songID = async (event) => {
   
     let track = event.target.textContent.trim();
     let isFeatTrack = track.indexOf('(') !== -1 ? track.split('(')[0].trim() : track;
     let artist = artistEl.firstElementChild.textContent;
-
     // calling API
     try {
         await fetch(`https://api.lyrics.ovh/v1/${artist}/${isFeatTrack}`, {
@@ -30,7 +31,8 @@ const songID = async (event) => {
             })
 
     } catch (error) {
-        console.error(error.message);
+        lyricsContainer.querySelector("p").innerText = "";
+        lyricsNotFoundModalEl.addClass("is-active")
     }
 };
 
@@ -81,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   
     // Add a click event on various child elements to close the parent modal
-    (document.querySelectorAll('.modal-background, .close-lyrics') || []).forEach(($close) => {
+    (document.querySelectorAll('.modal-background, .close-lyrics, .close-lyrics-not-found') || []).forEach(($close) => {
       const $target = $close.closest('.modal');
   
       $close.addEventListener('click', () => {

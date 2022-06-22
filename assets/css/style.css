@@ -152,7 +152,13 @@ a:hover {
 	color: var(--primary-color) !important;
 }
 
+main {
+	display: flex;
+	justify-content: center;
+	flex-wrap: flex;
+}
+
 .page-content {
-	width: 90%;
+	width: 100%;
 	margin-top: 20px;
 }

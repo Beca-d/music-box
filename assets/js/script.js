@@ -25,6 +25,8 @@ let tokenURL = 'https://accounts.spotify.com/api/token';
 const searchButtonEl = $(".search-button");
 const clearHistoryButtonEl = $(".clear-history");
 const searchHistoryListEl = $("#search-history");
+
+//Array to hold search history pulled from local storage and to update search history before saving to local storage
 let searchHistory = [];
 let searchText = "";
 
@@ -157,6 +159,9 @@ const renderTopSongs = (arr, trackIds) => {
 // 11. Top Song Player ********************************************************
 // Event Listener for click on top song. So far it opens the iFrame for the song sample. 
 topSongListEl.on("click", "li", function (event) {
+    //const spanSong = document.getElementById("span-title");
+    //spanSong.innerText = "Song";
+    
     $("#placeholder").remove();
 
     $("#music-player").attr("src", `https://open.spotify.com/embed/track/${event.target.getAttribute("data-track")}`);
@@ -209,3 +214,4 @@ const init = (() => {
        searchHistoryListEl.find("li").eq(0).trigger("click")
     }
 })();
+
