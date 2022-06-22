@@ -32,6 +32,7 @@ const songID = async (event) => {
             })
 
     } catch (error) {
+        lyricsContainer.querySelector("p").innerText = "";
         lyricsNotFoundModalEl.addClass("is-active")
     }
 };
