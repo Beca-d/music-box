@@ -125,7 +125,14 @@ a:hover {
 	font-size: 1.7rem;
 }
 
-#lyrics p,
+#lyrics div{
+	height: 50vh;   
+    overflow: scroll;
+    overflow-x: hidden;
+	padding : 0 5px;
+}
+
+#lyrics div,
 #artist-list li {
 	font-size: 18px;
 }
