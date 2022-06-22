@@ -34,52 +34,52 @@ const getToken = async (searchValueFromHistory) => {
     const response = await fetch(tokenURL, {
         method: 'POST',
         headers: {
-            'Content-Type' : 'application/x-www-form-urlencoded',
-            'Authorization' : 'Basic ' + clientValid
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Basic ' + clientValid
         },
         body: 'grant_type=client_credentials'
     })
     const data = await response.json();
     const { access_token } = data;
     // sessionStorage.setItem("token", access_token);
-    let input = searchValueFromHistory? searchValueFromHistory : searchText;
+    let input = searchValueFromHistory ? searchValueFromHistory : searchText;
     getArtistID(input, access_token);
 };
 
-searchButtonEl.on("click", function() {
+searchButtonEl.on("click", function () {
 
     // Re-setting the value of the search bar
     searchText = $(".search-bar").val().trim();
     $(".search-bar").val('');
-    $(".search-bar").attr("placeholder","Artist name");
+    $(".search-bar").attr("placeholder", "Artist name");
 
     // Only trigger if the value is not blank
-    if(searchText != ""){
+    if (searchText != "") {
         getToken();
     }
 });
 
- 
+
 // 3.a) ****************************************************
 const getArtistID = async (artist, token) => {
     const artistURL = `https://api.spotify.com/v1/search?q=${artist}&type=artist&limit=1`;
     const response = await fetch(artistURL, {
         method: 'GET',
         headers: {
-            'Accept' : 'application/json',
-            'Content-Type' : 'aplication/json',
-            'Authorization' : 'Bearer ' + token
+            'Accept': 'application/json',
+            'Content-Type': 'aplication/json',
+            'Authorization': 'Bearer ' + token
         }
     })
     const data = await response.json();
 
     const artistId = data.artists.items[0].id;
-    
+
     // 8.b) Call getTopTracks within Atist ID func to have access to artistId ****
     getTopTracks(artistId, token);
 
     const artistName = document.getElementById("artist-name")
-    artistName.innerText = artist;
+    artistName.innerText = artist.toUpperCase();
 };
 
 // Function to get top tracks
@@ -88,16 +88,16 @@ const getTopTracks = async (artistId, token) => {
     const response = await fetch(songsURL, {
         method: 'GET',
         headers: {
-            'Accept' : 'application/json',
-            'Content-Type' : 'aplication/json',
-            'Authorization' : 'Bearer ' + token
+            'Accept': 'application/json',
+            'Content-Type': 'aplication/json',
+            'Authorization': 'Bearer ' + token
         }
     })
     const data = await response.json();
     const { tracks } = data;
     var trackNames = [tracks[0].name, tracks[1].name, tracks[2].name, tracks[3].name, tracks[4].name, tracks[5].name, tracks[6].name, tracks[7].name, tracks[8].name, tracks[9].name];
     var trackIds = [tracks[0].id, tracks[1].id, tracks[2].id, tracks[3].id, tracks[4].id, tracks[5].id, tracks[6].id, tracks[7].id, tracks[8].id, tracks[9].id];
-    
+
     //set top songs to element with url link to another api call for lyrics/audio demo
 
     renderTopSongs(trackNames, trackIds);
@@ -115,7 +115,7 @@ const getTopTracks = async (artistId, token) => {
 // Function to save search history
 const saveSearchHistory = () => {
     // const searchValue = $(".search-bar").val().trim().toUpperCase()
-    if (!searchHistory.includes(searchText.toUpperCase())) {
+    if (searchText !="" && !searchHistory.includes(searchText.toUpperCase())) {
         searchHistory.push(searchText.toUpperCase());
         localStorage.setItem("search-history", JSON.stringify(searchHistory));
     }
@@ -128,14 +128,14 @@ const getSearchHistory = () => {
         searchHistory = JSON.parse(localStorage.getItem("search-history"));
     }
 };
- // 7. ******************************************************************
+// 7. ******************************************************************
 // Function to render search history
 const renderSearchHistory = () => {
     const searchHistoryEl = $("#search-history").children(".menu-list");
     searchHistoryEl.empty();
-    
+
     searchHistory.forEach(item => {
-        if(item != ""){
+        if (item != "") {
             searchHistoryEl.prepend(`<li><a class='search-history-item'>${item}</a></li>`)
         }
     })
@@ -150,7 +150,7 @@ const renderTopSongs = (arr, trackIds) => {
     topSongListEl.text("");
     arr.forEach(song => {
         topSongListEl.append(`<li class='song${counter}' data-track='${trackIds[counter]}'>${song}</li>`);
-        counter ++;
+        counter++;
     });
 };
 
@@ -158,7 +158,7 @@ const renderTopSongs = (arr, trackIds) => {
 // Event Listener for click on top song. So far it opens the iFrame for the song sample. 
 topSongListEl.on("click", "li", function (event) {
     $("#placeholder").remove();
-    
+
     $("#music-player").attr("src", `https://open.spotify.com/embed/track/${event.target.getAttribute("data-track")}`);
     $("#full-song-url").attr("href", `https://open.spotify.com/embed/track/${event.target.getAttribute("data-track")}`);
 });
@@ -175,8 +175,8 @@ searchHistoryListEl.on("click", "li", function (event) {
     let index = searchHistory.indexOf(searchText);
 
     // Switching Tabs in Search History
-    if(searchHistory.length > 0 && index > -1){           
-        searchHistory.splice(index,1);
+    if (searchHistory.length > 0 && index > -1) {
+        searchHistory.splice(index, 1);
         searchHistory.push(searchText);
         localStorage.setItem("search-history", JSON.stringify(searchHistory));
     }
@@ -185,17 +185,27 @@ searchHistoryListEl.on("click", "li", function (event) {
 
 // 15. ************************************************************************
 // Function to clear search history
-const clearSearchHistory = () => {   
+const clearSearchHistory = () => {
     searchHistory = [];
     $(topSongListEl).empty();
-    localStorage.removeItem("search-history");    
-    lyricsContainer.querySelector("p").innerText = "Click on a song to display Lyrics!";
-    $("#music-player").attr("src","");
+    localStorage.removeItem("search-history");
+
+    // Reset all the container
+    lyricsContainer.querySelector("div").innerText = "Click on a song to display Lyrics!";
+    $("#music-player").attr("src", "");
     $("#music-player").empty();
     $(".music-player-container").find("img").remove()
     $('#music-player').before(`<img src="./assets/images/musicplayer.jpg" id="placeholder" alt="Music Player Placeholder" />`)
 };
 
-getSearchHistory();
-renderSearchHistory();
+// On Load Function
+const init = (() => {
 
+    getSearchHistory();
+    renderSearchHistory();
+
+    // Loading the Top Songs on page re-load
+    if (searchHistory.length > 0) {
+       searchHistoryListEl.find("li").eq(0).trigger("click")
+    }
+})();
