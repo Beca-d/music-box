@@ -25,6 +25,8 @@ let tokenURL = 'https://accounts.spotify.com/api/token';
 const searchButtonEl = $(".search-button");
 const clearHistoryButtonEl = $(".clear-history");
 const searchHistoryListEl = $("#search-history");
+
+//Array to hold search history pulled from local storage and to update search history before saving to local storage
 let searchHistory = [];
 
 // 2. ****************************************************************
