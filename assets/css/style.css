@@ -13,11 +13,6 @@ h1 {
 	margin: 0.2rem;
 	text-align: center;
 }
-.container {
-	margin: 0.3rem;
-	max-width: 95%;
-	width: 200rem;
-}
 
 .column {
 	margin: 0rem 2rem;
@@ -66,6 +61,17 @@ h1 {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: flex-end;
+}
+
+.searched-artist {
+	margin: 40px 0;
+	border-bottom: solid var(--tertiary-color) 1px;
+}
+
+#artist-name {
+	font-size: 36px;
+	font-weight: bold;
+	color: var(--tertiary-color);
 }
 
 .labelSearch {
@@ -129,7 +135,6 @@ a:hover {
 }
 
 #placeholder {
-	height: auto;
 	width: 100%;
 }
 

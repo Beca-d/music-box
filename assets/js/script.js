@@ -51,6 +51,7 @@ searchButtonEl.on("click", function() {
     getToken()
 });
 
+ 
 // 3.a) ****************************************************
 const getArtistID = async (artist, token) => {
     const artistURL = `https://api.spotify.com/v1/search?q=${artist}&type=artist&limit=1`;
@@ -68,6 +69,9 @@ const getArtistID = async (artist, token) => {
     
     // 8.b) Call getTopTracks within Atist ID func to have access to artistId ****
     getTopTracks(artistId, token);
+
+    const artistName = document.getElementById("artist-name")
+    artistName.innerText = artist;
 };
 
 // Function to get top tracks
@@ -172,13 +176,3 @@ const clearSearchHistory = () => {
 getSearchHistory();
 renderSearchHistory();
 
-// $("#artist-list li").click(function() {
-//     $(this).prependTo("#artist-list");
-//     //.prepend(`<i>${"artist-list a"}}</li>`)
-//     console.log("complete!");
-// })
-
-$("#artist-list a").click(function() {
-    $(this).parent().before$("#artist-list a:first");
-    return false;
-});

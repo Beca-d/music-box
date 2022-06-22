@@ -46,7 +46,7 @@
                 <h1 id="artist-name"></h1>
             </div>
             <div class="columns page-content">
-                <section class="column is-3">
+                <section class="column is-one-quarter">
                     <div id="search-history" class="menu column">
                         <h2 class="menu-label">Search history</h2>
                         <ul class="menu-list" id="artist-list">
@@ -56,23 +56,22 @@
                         </p>
                     </div>
                 </section>
-                <div class="menu column is-3">
+                <div class="menu column is-one-quarter">
                     <h2 class="label">Top 10 Songs</h2>
                     <ol id="track-list" class="menu-list top-song-list"></ol>
                 </div>
-                <div class="column is-3" id="lyrics">
+                <div class="column is-one-quarter music-player-container">    
+                    <h2 class="label">Music Player <a class="button is-primary is-outlined" id="full-song-url" href="" target="_blank" >Go To Full Song</a></h2>
+                    <img src="./assets/images/musicplayer.jpg" id="placeholder" alt="Music Player Placeholder" />
+                    <iframe id="music-player" style="border-radius:12px" src="" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                </div>
+                <div class="column is-one-quarter" id="lyrics">
                     <label class="label">Lyrics
                         <button class="js-modal-trigger button is-primary is-outlined" data-target="modal-of-lyrics">
                         Copy Lyrics
                         </button>
                     </label>
                     <p class="lyrics-text">Click on a song to display Lyrics!</p>
-                </div>
-                
-                <div class="column is-3 music-player-container">    
-                    <h2 class="label">Music Player <a class="button is-primary is-outlined" id="full-song-url" href="" target="_blank" >Go To Full Song</a></h2>
-                    <img src="./assets/images/musicplayer.jpg" id="placeholder" alt="Music Player Placeholder" />
-                    <iframe id="music-player" style="border-radius:12px" src="" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                 </div>
             </div>
             <div id="modal-of-lyrics" class="modal">
@@ -95,7 +94,6 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
             referrerpolicy="no-referrer">
         </script>
-        <script src="./assets/js/player.js"></script>
         <script src="./assets/js/script.js"></script>
         <script src="./assets/js/lyrics.js"></script>
 	</body>
