@@ -13,11 +13,6 @@ h1 {
 	margin: 0.2rem;
 	text-align: center;
 }
-.container {
-	margin: 0.3rem;
-	max-width: 80%;
-	width: 200rem;
-}
 
 .column {
 	margin: 0rem 2rem;
@@ -68,6 +63,17 @@ h1 {
 	align-items: flex-end;
 }
 
+.searched-artist {
+	margin: 40px 0;
+	border-bottom: solid var(--tertiary-color) 1px;
+}
+
+#artist-name {
+	font-size: 36px;
+	font-weight: bold;
+	color: var(--tertiary-color);
+}
+
 .labelSearch {
 	color: var(--primary-color);
 	font-weight: 900;
@@ -78,44 +84,68 @@ h1 {
 #search-history {
 	margin-top: 20px;
 	border-radius: 5px;
-	-webkit-box-shadow: 0 0.5em 1em 0;
+	box-shadow: 0 0.5em 1em 0;
+	font-size: 20px;
 }
 
 .button {
 	background-color: var(--primary-color) !important;
 	border-radius: 10px;
+	font-weight: bold;
+	font-size: 18px;
 }
 
-button:hover {
+button:hover,
+a:hover {
 	box-shadow: 0 0.4rem 1.4rem 0 rgba(4, 7, 0, 0.521);
     transition: transform 150ms;
     transform: scale(1.03);
 }
 
 .menu-list li {
-	line-height: 1.7;
+	line-height: 2;
 	font-size: 1rem;
 }
 
-#search-history li{
-	box-shadow: inset 0 0.4rem 1.4rem 0 rgb(252, 190, 99);
+ #search-history li{ 
+	box-shadow: inset 0 0.4rem 1.4rem 0 rgb(214, 209, 202);
 }
 
 .menu-list li:hover {
 	background-color: var(--tertiary-color);
 	color: rgb(7, 7, 154);
 	box-shadow: 0 0.4rem 1.4rem 0 rgba(4, 7, 0, 0.521);
-	border-radius: 10px;
+	border-radius: 1px;
+	cursor: pointer;
 }
 
 .label {
 	color: var(--primary-color);
 	font-weight: 800;
+	font-size: 1.7rem;
 }
-.lyrics-text {
-	margin-bottom: 1rem;
+
+#lyrics p,
+#artist-list li {
+	font-size: 18px;
 }
 
 .copier {
 	margin-right: 0.5rem;
+}
+
+#placeholder {
+	width: 100%;
+}
+
+.js-modal-trigger,
+#full-song-url {
+	margin-left: 30px;
+	background-color: white !important;
+	color: var(--primary-color) !important;
+}
+
+.page-content {
+	width: 90%;
+	margin-top: 20px;
 }
