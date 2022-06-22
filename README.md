@@ -4,8 +4,7 @@
 
 * [Description](#description)
 * [Technologies](#technologies)
-* [APIs](#APIs)
-* [Website URL](#website-URL)
+* [APIs](#apis)
 * [Setup](#setup)
 * [Webpage Demo](#webpage-demo)
 * [Contributors](#contributors)
@@ -37,22 +36,19 @@ This webpage was built to give music fans a hub to search their favourite artist
 
 ---
 
-## Website URL
-
-https://beca-d.github.io/music-box/
----
-
-## Setup
-
----
-
 ## Webpage Demo
+
+Link to Webpage: [MusicBox - For Music Lovers](https://beca-d.github.io/music-box/)
+
 ![musicBox1](https://user-images.githubusercontent.com/67708213/174935356-4fe69f2e-1db3-46b3-8ca7-420429d660cf.JPG)
 ![musicBox_modal](https://user-images.githubusercontent.com/67708213/174935373-1828d2c6-8163-488a-8ff1-a0e41543bbcc.JPG)
 
 ---
 
 ## Contributors
-Jaryd Knight, Arjun Sharman, Michelle Douma, Vadad Rzali, & Rebeca Smith
-* Github: jarydknight, arjunsharman06, Amoudmi, vrali, & Beca-d
+
+Developed &copy; 2022 by the collaborative effort of:
+
+**Jaryd Knight, Arjun Sharman, Michelle Douma, Vadad Rzali, & Rebeca Smith**<br>
+Github: *jarydknight, arjunsharman06, Amoudmi, vrzali, & Beca-d*
 
