@@ -4,8 +4,8 @@ var artistEl = document.getElementById("artist-list");
 var lyricsModal = document.getElementById('song-lyrics-modal');
 
 // Get Lyrics Lyrics.ovh API 
-const songID = async (event) => {
-
+const songID = async (event) => {  
+  debugger;
     let track = event.target.textContent.trim();
     let isFeatTrack = track.indexOf('(') !== -1 ? track.split('(')[0].trim() : track;
     let artist = artistEl.firstElementChild.textContent;
@@ -24,8 +24,8 @@ const songID = async (event) => {
                 let result = isEmptyOrNull(data);
 
                 // Setting the value to Lyrics Container
-                lyricsContainer.querySelector("p").innerText = "";
-                lyricsContainer.querySelector("p").innerText = result.lyrics;
+                lyricsContainer.querySelector("div").innerText = "";
+                lyricsContainer.querySelector("div").innerText = result.lyrics;
                 lyricsModal.innerText = result.lyrics;
             })
 

@@ -26,6 +26,7 @@ const searchButtonEl = $(".search-button");
 const clearHistoryButtonEl = $(".clear-history");
 const searchHistoryListEl = $("#search-history");
 let searchHistory = [];
+let searchText = "";
 
 // 2. ****************************************************************
 //Must get token api call to run first - otherwise errors occur!!!!
@@ -41,14 +42,21 @@ const getToken = async (searchValueFromHistory) => {
     const data = await response.json();
     const { access_token } = data;
     // sessionStorage.setItem("token", access_token);
-    
-    const searchText = $(".search-bar").val();
     let input = searchValueFromHistory? searchValueFromHistory : searchText;
     getArtistID(input, access_token);
 };
 
 searchButtonEl.on("click", function() {
-    getToken()
+
+    // Re-setting the value of the search bar
+    searchText = $(".search-bar").val().trim();
+    $(".search-bar").val('');
+    $(".search-bar").attr("placeholder","Artist name");
+
+    // Only trigger if the value is not blank
+    if(searchText != ""){
+        getToken();
+    }
 });
 
  
@@ -106,9 +114,9 @@ const getTopTracks = async (artistId, token) => {
 
 // Function to save search history
 const saveSearchHistory = () => {
-    const searchValue = $(".search-bar").val().trim().toUpperCase()
-    if (!searchHistory.includes(searchValue)) {
-        searchHistory.push(searchValue);
+    // const searchValue = $(".search-bar").val().trim().toUpperCase()
+    if (!searchHistory.includes(searchText.toUpperCase())) {
+        searchHistory.push(searchText.toUpperCase());
         localStorage.setItem("search-history", JSON.stringify(searchHistory));
     }
 };
@@ -127,7 +135,9 @@ const renderSearchHistory = () => {
     searchHistoryEl.empty();
     
     searchHistory.forEach(item => {
-        searchHistoryEl.prepend(`<li><a class='search-history-item'>${item}</a></li>`)
+        if(item != ""){
+            searchHistoryEl.prepend(`<li><a class='search-history-item'>${item}</a></li>`)
+        }
     })
 };
 
@@ -162,15 +172,28 @@ clearHistoryButtonEl.on("click", function (event) {
 // Event listener for clicks on search history item to bring up results of search again
 searchHistoryListEl.on("click", "li", function (event) {
     const searchText = $(event.target).text();
-    console.log(searchText)
+    let index = searchHistory.indexOf(searchText);
+
+    // Switching Tabs in Search History
+    if(searchHistory.length > 0 && index > -1){           
+        searchHistory.splice(index,1);
+        searchHistory.push(searchText);
+        localStorage.setItem("search-history", JSON.stringify(searchHistory));
+    }
     getToken(searchText);
 })
 
 // 15. ************************************************************************
 // Function to clear search history
-const clearSearchHistory = () => {
+const clearSearchHistory = () => {   
     searchHistory = [];
-    localStorage.removeItem("search-history");
+    $(topSongListEl).empty();
+    localStorage.removeItem("search-history");    
+    lyricsContainer.querySelector("p").innerText = "Click on a song to display Lyrics!";
+    $("#music-player").attr("src","");
+    $("#music-player").empty();
+    $(".music-player-container").find("img").remove()
+    $('#music-player').before(`<img src="./assets/images/musicplayer.jpg" id="placeholder" alt="Music Player Placeholder" />`)
 };
 
 getSearchHistory();
