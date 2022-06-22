@@ -4,6 +4,7 @@
 
 * [Description](#description)
 * [Technologies](#technologies)
+* [APIs](#APIs)
 * [Website URL](#website-URL)
 * [Setup](#setup)
 * [Webpage Demo](#webpage-demo)
@@ -21,12 +22,24 @@ This webpage was built to give music fans a hub to search their favourite artist
 
 * HTML5
 * CSS
+* Bulma
 * Javascript
+* JQuery
+* Google Fonts
+* Font Awesome
+
+---
+
+## APIs 
+
+* Spotify
+* Genius
 
 ---
 
 ## Website URL
 
+https://beca-d.github.io/music-box/
 ---
 
 ## Setup
@@ -34,6 +47,8 @@ This webpage was built to give music fans a hub to search their favourite artist
 ---
 
 ## Webpage Demo
+![musicBox1](https://user-images.githubusercontent.com/67708213/174935356-4fe69f2e-1db3-46b3-8ca7-420429d660cf.JPG)
+![musicBox_modal](https://user-images.githubusercontent.com/67708213/174935373-1828d2c6-8163-488a-8ff1-a0e41543bbcc.JPG)
 
 ---
 
